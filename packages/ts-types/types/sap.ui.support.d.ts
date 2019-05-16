@@ -13,7 +13,6 @@
 /// <reference path="./sap.ui.documentation.d.ts" />
 /// <reference path="./sap.ui.dt.d.ts" />
 /// <reference path="./sap.ui.fl.d.ts" />
-/// <reference path="./sap.ui.integration.d.ts" />
 /// <reference path="./sap.ui.layout.d.ts" />
 /// <reference path="./sap.ui.rta.d.ts" />
 /// <reference path="./sap.ui.suite.d.ts" />
@@ -21,7 +20,7 @@
 /// <reference path="./sap.ui.unified.d.ts" />
 /// <reference path="./sap.ui.ux3.d.ts" />
 /// <reference path="./sap.uxap.d.ts" />
-// For Library Version: 1.65.1
+// For Library Version: 1.60.12
 
 declare namespace sap {
   namespace ui {
@@ -77,21 +76,17 @@ declare namespace sap {
          */
         function analyze(
           /**
-           * The execution scope of the analysis (see {@link topic:e15067d976f24b11907f4c262bd749a0 Execution Scope}).
+           * The execution scope of the analysis (see {@link topic:e15067d976f24b11907f4c262bd749a0 Execution Scopes}).
            */
           oExecutionScope?: {
             /**
-             * Possible values are `global`, `subtree` or `components`.
+             * Possible values are `global`, `subtree` or `component`.
              */
             type?: string;
             /**
-             * ID of the root element that forms a subtree. Use when the scope type is `subtree`.
+             * ID of the root element that forms a subtree. Use when the scope is not `global`.
              */
             parentId?: string;
-            /**
-             * List of IDs of the components to be analyzed. Use only when the scope type is `components`.
-             */
-            components?: string[];
           },
           /**
            * This optional parameter allows for selection of subset of rules for the analysis. You can pass:
@@ -100,11 +95,7 @@ declare namespace sap {
            * 	 - A string that refers to the ID of a system preset.
            * 	 - An object array with a plain list of rules.
            */
-          vPresetOrRules?: object | string | object[],
-          /**
-           * Metadata in custom format. Its only purpose is to be included in the analysis report.
-           */
-          oMetadata?: object
+          vPresetOrRules?: object | string | object[]
         ): Promise<any>;
         /**
          * Returns the history of all executed analyses.
@@ -122,7 +113,7 @@ declare namespace sap {
         /**
          * Returns the result of the last analysis performed.
          */
-        function getLastAnalysisHistory(): any;
+        function getLastAnalysisHistory(): Object;
       }
       /**
        * Creates a RuleSet. The RuleSet can store multiple rules concerning namespaces. Usage: The RuleSet is
@@ -154,7 +145,7 @@ declare namespace sap {
           /**
            * The current loaded libraries and their rules
            */
-          aLibraries: Object[]
+          aLibraries: any
         ): void;
         /**
          * Remove rule from RuleSet.
@@ -172,7 +163,7 @@ declare namespace sap {
           /**
            * The data for the libraries and their rules
            */
-          aLibraries: Object[]
+          aLibraries: any
         ): void;
         /**
          * Updates rules from the RuleSet.
@@ -254,10 +245,6 @@ declare namespace sap {
          * Returns all public elements, i.e. elements that are part of public API aggregations
          */
         static getPublicElements(): any[];
-        /**
-         * Gets the type of the execution scope
-         */
-        static getType(): string;
       }
       /**
        * @SINCE undefined

@@ -12,7 +12,6 @@
 /// <reference path="./sap.ui.demokit.d.ts" />
 /// <reference path="./sap.ui.documentation.d.ts" />
 /// <reference path="./sap.ui.fl.d.ts" />
-/// <reference path="./sap.ui.integration.d.ts" />
 /// <reference path="./sap.ui.layout.d.ts" />
 /// <reference path="./sap.ui.rta.d.ts" />
 /// <reference path="./sap.ui.suite.d.ts" />
@@ -21,7 +20,7 @@
 /// <reference path="./sap.ui.unified.d.ts" />
 /// <reference path="./sap.ui.ux3.d.ts" />
 /// <reference path="./sap.uxap.d.ts" />
-// For Library Version: 1.65.1
+// For Library Version: 1.60.12
 
 declare namespace sap {
   interface IUI5DefineDependencyNames {}

@@ -13,7 +13,6 @@
 /// <reference path="./sap.ui.documentation.d.ts" />
 /// <reference path="./sap.ui.dt.d.ts" />
 /// <reference path="./sap.ui.fl.d.ts" />
-/// <reference path="./sap.ui.integration.d.ts" />
 /// <reference path="./sap.ui.layout.d.ts" />
 /// <reference path="./sap.ui.rta.d.ts" />
 /// <reference path="./sap.ui.suite.d.ts" />
@@ -21,7 +20,7 @@
 /// <reference path="./sap.ui.table.d.ts" />
 /// <reference path="./sap.ui.unified.d.ts" />
 /// <reference path="./sap.ui.ux3.d.ts" />
-// For Library Version: 1.65.1
+// For Library Version: 1.60.12
 
 declare namespace sap {
   /**
@@ -181,89 +180,6 @@ declare namespace sap {
       externalPath?: string;
     }
 
-    interface ObjectPageAccessibleLandmarkInfoOpts
-      extends sap.ui.core.ElementOpts {
-      /**
-       * Landmark role of the root container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       */
-      rootRole?: sap.ui.core.AccessibleLandmarkRole;
-
-      /**
-       * Texts which describe the landmark of the root container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       */
-      rootLabel?: string;
-
-      /**
-       * Landmark role of the content container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       */
-      contentRole?: sap.ui.core.AccessibleLandmarkRole;
-
-      /**
-       * Texts which describe the landmark of the content container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       */
-      contentLabel?: string;
-
-      /**
-       * Landmark role of the navigation container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       */
-      navigationRole?: sap.ui.core.AccessibleLandmarkRole;
-
-      /**
-       * Texts which describe the landmark of the navigation container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       */
-      navigationLabel?: string;
-
-      /**
-       * Landmark role of the header container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       */
-      headerRole?: sap.ui.core.AccessibleLandmarkRole;
-
-      /**
-       * Texts which describe the landmark of the header container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       */
-      headerLabel?: string;
-
-      /**
-       * Landmark role of the footer container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       */
-      footerRole?: sap.ui.core.AccessibleLandmarkRole;
-
-      /**
-       * Texts which describe the landmark of the header container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       */
-      footerLabel?: string;
-    }
-
     interface ObjectPageHeaderOpts extends sap.ui.core.ControlOpts {
       /**
        * The URL of the image, representing the business object
@@ -404,10 +320,6 @@ declare namespace sap {
        * List of actions that will be displayed in the header. You can use ObjectPageHeaderActionButton controls
        * to achieve a different visual representation of the action buttons in the action bar and the action sheet
        * (overflow menu). You can use ObjectPageHeaderLayoutData to display a visual separator.
-       *
-       * **Note:** If an action is placed inside the overflow area, an additional `bInOverflow` parameter is passed
-       * along with the `press` event to indicate that a popup shouldn't be opened from that action and a dialog
-       * should be used instead.
        */
       actions?: sap.ui.core.Control[] | sap.ui.core.Control;
 
@@ -570,10 +482,8 @@ declare namespace sap {
       sectionTitleLevel?: sap.ui.core.TitleLevel;
 
       /**
-       * Determines whether the navigation mode is tab-based instead of the default anchor bar. If enabled, the
-       * sections are displayed separately on each tab rather than having all of them visible at the same time.
-       *
-       * **Note:** Keep in mind that the `sap.m.IconTabBar` control is no longer used for the tab navigation mode.
+       * Use tab navigation mode instead of the default Anchor bar mode.
+       * **Note: **Keep in mind that the `sap.m.IconTabBar` control is no longer used for the tab navigation mode.
        */
       useIconTabBar?: boolean;
 
@@ -727,15 +637,6 @@ declare namespace sap {
        * Object page floating footer.
        */
       footer?: sap.m.IBar;
-
-      /**
-       * @SINCE 1.61
-       *
-       * Accessible landmark settings to be applied on the containers of the `sap.uxap.ObjectPageLayout` control.
-       *
-       * If not set, no landmarks will be written.
-       */
-      landmarkInfo?: sap.uxap.ObjectPageAccessibleLandmarkInfo;
 
       /**
        * @SINCE 1.44.0
@@ -1142,7 +1043,7 @@ declare namespace sap {
        *
        * Map external UI5 model and internal Block model
        */
-      getMappings(): sap.uxap.ModelMapping[];
+      getMappings(): any;
       /**
        * Returns a metadata object for class sap.uxap.BlockBase.
        */
@@ -1210,7 +1111,7 @@ declare namespace sap {
        *
        * Additionally, it unregisters them from the hosting UIArea.
        */
-      removeAllMappings(): sap.uxap.ModelMapping[];
+      removeAllMappings(): any;
       /**
        * Removes a mapping from the aggregation {@link #getMappings mappings}.
        */
@@ -1374,7 +1275,7 @@ declare namespace sap {
        *
        * A list of all the active link elements in the BreadCrumbs control.
        */
-      getLinks(): sap.m.Link[];
+      getLinks(): any;
       /**
        * Returns a metadata object for class sap.uxap.BreadCrumbs.
        */
@@ -1418,7 +1319,7 @@ declare namespace sap {
        *
        * Additionally, it unregisters them from the hosting UIArea.
        */
-      removeAllLinks(): sap.m.Link[];
+      removeAllLinks(): any;
       /**
        * Removes a link from the aggregation {@link #getLinks links}.
        */
@@ -1641,329 +1542,6 @@ declare namespace sap {
          */
         sInternalModelName: string
       ): sap.uxap.ModelMapping;
-    }
-    /**
-     * @SINCE 1.61
-     *
-     * Settings for accessible landmarks which can be applied to the container elements of a `sap.uxap.ObjectPageLayout`
-     * control. These landmarks are used by assistive technologies (such as screenreaders) to provide a meaningful
-     * page overview.
-     */
-    class ObjectPageAccessibleLandmarkInfo extends sap.ui.core.Element {
-      /**
-       * Constructor for a new `sap.uxap.ObjectPageAccessibleLandmarkInfo` element.
-       *
-       * Accepts an object literal `mSettings` that defines initial property values, aggregated and associated
-       * objects as well as event handlers. See {@link sap.ui.base.ManagedObject#constructor} for a general description
-       * of the syntax of the settings object.
-       */
-      constructor(
-        /**
-         * ID for the new element, generated automatically if no ID is given
-         */
-        sId?: string,
-        /**
-         * Initial settings for the new element
-         */
-        mSettings?: ObjectPageAccessibleLandmarkInfoOpts
-      );
-
-      /**
-       * Creates a new subclass of class sap.uxap.ObjectPageAccessibleLandmarkInfo with name `sClassName` and
-       * enriches it with the information contained in `oClassInfo`.
-       *
-       * `oClassInfo` might contain the same kind of information as described in {@link sap.ui.core.Element.extend}.
-       */
-      // @ts-ignore
-      static extend(
-        /**
-         * Name of the class being created
-         */
-        sClassName: string,
-        /**
-         * Object literal with information about the class
-         */
-        oClassInfo?: object,
-        /**
-         * Constructor function for the metadata object; if not given, it defaults to `sap.ui.core.ElementMetadata`
-         */
-        FNMetaImpl?: Function
-      ): Function;
-      /**
-       * Gets current value of property {@link #getContentLabel contentLabel}.
-       *
-       * Texts which describe the landmark of the content container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       */
-      getContentLabel(): string;
-      /**
-       * Gets current value of property {@link #getContentRole contentRole}.
-       *
-       * Landmark role of the content container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       *
-       * Default value is `None`.
-       */
-      getContentRole(): sap.ui.core.AccessibleLandmarkRole;
-      /**
-       * Gets current value of property {@link #getFooterLabel footerLabel}.
-       *
-       * Texts which describe the landmark of the header container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       */
-      getFooterLabel(): string;
-      /**
-       * Gets current value of property {@link #getFooterRole footerRole}.
-       *
-       * Landmark role of the footer container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       *
-       * Default value is `Region`.
-       */
-      getFooterRole(): sap.ui.core.AccessibleLandmarkRole;
-      /**
-       * Gets current value of property {@link #getHeaderLabel headerLabel}.
-       *
-       * Texts which describe the landmark of the header container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       */
-      getHeaderLabel(): string;
-      /**
-       * Gets current value of property {@link #getHeaderRole headerRole}.
-       *
-       * Landmark role of the header container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       *
-       * Default value is `Banner`.
-       */
-      getHeaderRole(): sap.ui.core.AccessibleLandmarkRole;
-      /**
-       * Returns a metadata object for class sap.uxap.ObjectPageAccessibleLandmarkInfo.
-       */
-      // @ts-ignore
-      static getMetadata(): sap.ui.base.Metadata;
-      /**
-       * Gets current value of property {@link #getNavigationLabel navigationLabel}.
-       *
-       * Texts which describe the landmark of the navigation container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       */
-      getNavigationLabel(): string;
-      /**
-       * Gets current value of property {@link #getNavigationRole navigationRole}.
-       *
-       * Landmark role of the navigation container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       *
-       * Default value is `Navigation`.
-       */
-      getNavigationRole(): sap.ui.core.AccessibleLandmarkRole;
-      /**
-       * Gets current value of property {@link #getRootLabel rootLabel}.
-       *
-       * Texts which describe the landmark of the root container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       */
-      getRootLabel(): string;
-      /**
-       * Gets current value of property {@link #getRootRole rootRole}.
-       *
-       * Landmark role of the root container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       *
-       * Default value is `Main`.
-       */
-      getRootRole(): sap.ui.core.AccessibleLandmarkRole;
-      /**
-       * Sets a new value for property {@link #getContentLabel contentLabel}.
-       *
-       * Texts which describe the landmark of the content container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       *
-       * When called with a value of `null` or `undefined`, the default value of the property will be restored.
-       */
-      setContentLabel(
-        /**
-         * New value for property `contentLabel`
-         */
-        sContentLabel: string
-      ): sap.uxap.ObjectPageAccessibleLandmarkInfo;
-      /**
-       * Sets a new value for property {@link #getContentRole contentRole}.
-       *
-       * Landmark role of the content container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       *
-       * When called with a value of `null` or `undefined`, the default value of the property will be restored.
-       *
-       * Default value is `None`.
-       */
-      setContentRole(
-        /**
-         * New value for property `contentRole`
-         */
-        sContentRole: sap.ui.core.AccessibleLandmarkRole
-      ): sap.uxap.ObjectPageAccessibleLandmarkInfo;
-      /**
-       * Sets a new value for property {@link #getFooterLabel footerLabel}.
-       *
-       * Texts which describe the landmark of the header container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       *
-       * When called with a value of `null` or `undefined`, the default value of the property will be restored.
-       */
-      setFooterLabel(
-        /**
-         * New value for property `footerLabel`
-         */
-        sFooterLabel: string
-      ): sap.uxap.ObjectPageAccessibleLandmarkInfo;
-      /**
-       * Sets a new value for property {@link #getFooterRole footerRole}.
-       *
-       * Landmark role of the footer container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       *
-       * When called with a value of `null` or `undefined`, the default value of the property will be restored.
-       *
-       * Default value is `Region`.
-       */
-      setFooterRole(
-        /**
-         * New value for property `footerRole`
-         */
-        sFooterRole: sap.ui.core.AccessibleLandmarkRole
-      ): sap.uxap.ObjectPageAccessibleLandmarkInfo;
-      /**
-       * Sets a new value for property {@link #getHeaderLabel headerLabel}.
-       *
-       * Texts which describe the landmark of the header container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       *
-       * When called with a value of `null` or `undefined`, the default value of the property will be restored.
-       */
-      setHeaderLabel(
-        /**
-         * New value for property `headerLabel`
-         */
-        sHeaderLabel: string
-      ): sap.uxap.ObjectPageAccessibleLandmarkInfo;
-      /**
-       * Sets a new value for property {@link #getHeaderRole headerRole}.
-       *
-       * Landmark role of the header container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       *
-       * When called with a value of `null` or `undefined`, the default value of the property will be restored.
-       *
-       * Default value is `Banner`.
-       */
-      setHeaderRole(
-        /**
-         * New value for property `headerRole`
-         */
-        sHeaderRole: sap.ui.core.AccessibleLandmarkRole
-      ): sap.uxap.ObjectPageAccessibleLandmarkInfo;
-      /**
-       * Sets a new value for property {@link #getNavigationLabel navigationLabel}.
-       *
-       * Texts which describe the landmark of the navigation container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       *
-       * When called with a value of `null` or `undefined`, the default value of the property will be restored.
-       */
-      setNavigationLabel(
-        /**
-         * New value for property `navigationLabel`
-         */
-        sNavigationLabel: string
-      ): sap.uxap.ObjectPageAccessibleLandmarkInfo;
-      /**
-       * Sets a new value for property {@link #getNavigationRole navigationRole}.
-       *
-       * Landmark role of the navigation container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       *
-       * When called with a value of `null` or `undefined`, the default value of the property will be restored.
-       *
-       * Default value is `Navigation`.
-       */
-      setNavigationRole(
-        /**
-         * New value for property `navigationRole`
-         */
-        sNavigationRole: sap.ui.core.AccessibleLandmarkRole
-      ): sap.uxap.ObjectPageAccessibleLandmarkInfo;
-      /**
-       * Sets a new value for property {@link #getRootLabel rootLabel}.
-       *
-       * Texts which describe the landmark of the root container of the corresponding `sap.uxap.ObjectPageLayout`
-       * control.
-       *
-       * If not set (and a landmark different than `sap.ui.core.AccessibleLandmarkRole.None` is defined), no label
-       * is set.
-       *
-       * When called with a value of `null` or `undefined`, the default value of the property will be restored.
-       */
-      setRootLabel(
-        /**
-         * New value for property `rootLabel`
-         */
-        sRootLabel: string
-      ): sap.uxap.ObjectPageAccessibleLandmarkInfo;
-      /**
-       * Sets a new value for property {@link #getRootRole rootRole}.
-       *
-       * Landmark role of the root container of the corresponding `sap.uxap.ObjectPageLayout` control.
-       *
-       * If set to `sap.ui.core.AccessibleLandmarkRole.None`, no landmark will be added to the container.
-       *
-       * When called with a value of `null` or `undefined`, the default value of the property will be restored.
-       *
-       * Default value is `Main`.
-       */
-      setRootRole(
-        /**
-         * New value for property `rootRole`
-         */
-        sRootRole: sap.ui.core.AccessibleLandmarkRole
-      ): sap.uxap.ObjectPageAccessibleLandmarkInfo;
     }
     /**
      * @SINCE 1.52
@@ -2364,12 +1942,8 @@ declare namespace sap {
        * List of actions that will be displayed in the header. You can use ObjectPageHeaderActionButton controls
        * to achieve a different visual representation of the action buttons in the action bar and the action sheet
        * (overflow menu). You can use ObjectPageHeaderLayoutData to display a visual separator.
-       *
-       * **Note:** If an action is placed inside the overflow area, an additional `bInOverflow` parameter is passed
-       * along with the `press` event to indicate that a popup shouldn't be opened from that action and a dialog
-       * should be used instead.
        */
-      getActions(): sap.ui.core.Control[];
+      getActions(): any;
       /**
        * @SINCE 1.50
        *
@@ -2386,7 +1960,7 @@ declare namespace sap {
        *
        * A list of all the active link elements in the BreadCrumbs control.
        */
-      getBreadCrumbsLinks(): sap.m.Link[];
+      getBreadCrumbsLinks(): any;
       /**
        * @deprecated (since 1.40.1)
        *
@@ -2635,7 +2209,7 @@ declare namespace sap {
        *
        * Additionally, it unregisters them from the hosting UIArea.
        */
-      removeAllActions(): sap.ui.core.Control[];
+      removeAllActions(): any;
       /**
        * @deprecated (since 1.50) - use the `breadcrumbs` aggregation instead.
        *
@@ -2643,7 +2217,7 @@ declare namespace sap {
        *
        * Additionally, it unregisters them from the hosting UIArea.
        */
-      removeAllBreadCrumbsLinks(): sap.m.Link[];
+      removeAllBreadCrumbsLinks(): any;
       /**
        * @deprecated (since 1.50) - use the `breadcrumbs` aggregation instead.
        *
@@ -3241,7 +2815,7 @@ declare namespace sap {
        *
        * The list of Objects of type sap.ui.core.Control.
        */
-      getContent(): sap.ui.core.Control[];
+      getContent(): any;
       /**
        * @deprecated (since 1.40.1)
        *
@@ -3288,7 +2862,7 @@ declare namespace sap {
        *
        * Additionally, it unregisters them from the hosting UIArea.
        */
-      removeAllContent(): sap.ui.core.Control[];
+      removeAllContent(): any;
       /**
        * Removes a content from the aggregation {@link #getContent content}.
        */
@@ -3685,12 +3259,6 @@ declare namespace sap {
        */
       destroyHeaderTitle(): sap.uxap.ObjectPageLayout;
       /**
-       * @SINCE 1.61
-       *
-       * Destroys the landmarkInfo in the aggregation {@link #getLandmarkInfo landmarkInfo}.
-       */
-      destroyLandmarkInfo(): sap.uxap.ObjectPageLayout;
-      /**
        * Destroys all the sections in the aggregation {@link #getSections sections}.
        */
       destroySections(): sap.uxap.ObjectPageLayout;
@@ -3864,7 +3432,7 @@ declare namespace sap {
        *
        * Object page header content - the dynamic part of the Object page header.
        */
-      getHeaderContent(): sap.ui.core.Control[];
+      getHeaderContent(): any;
       /**
        * @SINCE 1.52
        *
@@ -3910,16 +3478,6 @@ declare namespace sap {
        */
       getIsChildPage(): boolean;
       /**
-       * @SINCE 1.61
-       *
-       * Gets content of aggregation {@link #getLandmarkInfo landmarkInfo}.
-       *
-       * Accessible landmark settings to be applied on the containers of the `sap.uxap.ObjectPageLayout` control.
-       *
-       * If not set, no landmarks will be written.
-       */
-      getLandmarkInfo(): sap.uxap.ObjectPageAccessibleLandmarkInfo;
-      /**
        * Returns a metadata object for class sap.uxap.ObjectPageLayout.
        */
       // @ts-ignore
@@ -3955,7 +3513,7 @@ declare namespace sap {
        *
        * The sections that make up the Object page content area.
        */
-      getSections(): sap.uxap.ObjectPageSection[];
+      getSections(): any;
       /**
        * @SINCE 1.44.0
        *
@@ -4095,10 +3653,8 @@ declare namespace sap {
       /**
        * Gets current value of property {@link #getUseIconTabBar useIconTabBar}.
        *
-       * Determines whether the navigation mode is tab-based instead of the default anchor bar. If enabled, the
-       * sections are displayed separately on each tab rather than having all of them visible at the same time.
-       *
-       * **Note:** Keep in mind that the `sap.m.IconTabBar` control is no longer used for the tab navigation mode.
+       * Use tab navigation mode instead of the default Anchor bar mode.
+       * **Note: **Keep in mind that the `sap.m.IconTabBar` control is no longer used for the tab navigation mode.
        *
        * Default value is `false`.
        */
@@ -4178,13 +3734,13 @@ declare namespace sap {
        *
        * Additionally, it unregisters them from the hosting UIArea.
        */
-      removeAllHeaderContent(): sap.ui.core.Control[];
+      removeAllHeaderContent(): any;
       /**
        * Removes all the controls from the aggregation {@link #getSections sections}.
        *
        * Additionally, it unregisters them from the hosting UIArea.
        */
-      removeAllSections(): sap.uxap.ObjectPageSection[];
+      removeAllSections(): any;
       /**
        * Removes a headerContent from the aggregation {@link #getHeaderContent headerContent}.
        */
@@ -4362,17 +3918,6 @@ declare namespace sap {
          * New value for property `isChildPage`
          */
         bIsChildPage: boolean
-      ): sap.uxap.ObjectPageLayout;
-      /**
-       * @SINCE 1.61
-       *
-       * Sets the aggregated {@link #getLandmarkInfo landmarkInfo}.
-       */
-      setLandmarkInfo(
-        /**
-         * The landmarkInfo to set
-         */
-        oLandmarkInfo: sap.uxap.ObjectPageAccessibleLandmarkInfo
       ): sap.uxap.ObjectPageLayout;
       /**
        * @SINCE 1.52
@@ -4624,10 +4169,8 @@ declare namespace sap {
       /**
        * Sets a new value for property {@link #getUseIconTabBar useIconTabBar}.
        *
-       * Determines whether the navigation mode is tab-based instead of the default anchor bar. If enabled, the
-       * sections are displayed separately on each tab rather than having all of them visible at the same time.
-       *
-       * **Note:** Keep in mind that the `sap.m.IconTabBar` control is no longer used for the tab navigation mode.
+       * Use tab navigation mode instead of the default Anchor bar mode.
+       * **Note: **Keep in mind that the `sap.m.IconTabBar` control is no longer used for the tab navigation mode.
        *
        * When called with a value of `null` or `undefined`, the default value of the property will be restored.
        *
@@ -4787,7 +4330,7 @@ declare namespace sap {
        *
        * Controls to be displayed after this element is unstashed
        */
-      getContent(): sap.ui.core.Control[];
+      getContent(): any;
       /**
        * Returns a metadata object for class sap.uxap.ObjectPageLazyLoader.
        */
@@ -4823,7 +4366,7 @@ declare namespace sap {
        *
        * Additionally, it unregisters them from the hosting UIArea.
        */
-      removeAllContent(): sap.ui.core.Control[];
+      removeAllContent(): any;
       /**
        * Removes a content from the aggregation {@link #getContent content}.
        */
@@ -4919,7 +4462,7 @@ declare namespace sap {
        *
        * The list of Subsections.
        */
-      getSubSections(): sap.uxap.ObjectPageSubSection[];
+      getSubSections(): any;
       /**
        * Gets current value of property {@link #getTitleUppercase titleUppercase}.
        *
@@ -4958,7 +4501,7 @@ declare namespace sap {
        *
        * Additionally, it unregisters them from the hosting UIArea.
        */
-      removeAllSubSections(): sap.uxap.ObjectPageSubSection[];
+      removeAllSubSections(): any;
       /**
        * Removes a subSection from the aggregation {@link #getSubSections subSections}.
        */
@@ -5294,7 +4837,7 @@ declare namespace sap {
        *
        * Actions available for this Subsection
        */
-      getActions(): sap.ui.core.Control[];
+      getActions(): any;
       /**
        * Gets content of aggregation {@link #getBlocks blocks}.
        *
@@ -5315,7 +4858,7 @@ declare namespace sap {
        * ` <Panel class="sapUxAPObjectPageSubSectionAlignContent" width="auto"></Panel> `
        * ```
        */
-      getBlocks(): sap.ui.core.Control[];
+      getBlocks(): any;
       /**
        * Returns a metadata object for class sap.uxap.ObjectPageSubSection.
        */
@@ -5335,7 +4878,7 @@ declare namespace sap {
        *
        * Additional controls to display when the Show more / See all / (...) button is pressed
        */
-      getMoreBlocks(): sap.ui.core.Control[];
+      getMoreBlocks(): any;
       /**
        * Gets current value of property {@link #getTitleUppercase titleUppercase}.
        *
@@ -5435,19 +4978,19 @@ declare namespace sap {
        *
        * Additionally, it unregisters them from the hosting UIArea.
        */
-      removeAllActions(): sap.ui.core.Control[];
+      removeAllActions(): any;
       /**
        * Removes all the controls from the aggregation {@link #getBlocks blocks}.
        *
        * Additionally, it unregisters them from the hosting UIArea.
        */
-      removeAllBlocks(): sap.ui.core.Control[];
+      removeAllBlocks(): any;
       /**
        * Removes all the controls from the aggregation {@link #getMoreBlocks moreBlocks}.
        *
        * Additionally, it unregisters them from the hosting UIArea.
        */
-      removeAllMoreBlocks(): sap.ui.core.Control[];
+      removeAllMoreBlocks(): any;
       /**
        * Removes a block from the aggregation {@link #getBlocks blocks}.
        */
@@ -5612,8 +5155,6 @@ declare namespace sap {
     "sap/uxap/HierarchicalSelect": undefined;
 
     "sap/uxap/ModelMapping": undefined;
-
-    "sap/uxap/ObjectPageAccessibleLandmarkInfo": undefined;
 
     "sap/uxap/ObjectPageDynamicHeaderContent": undefined;
 

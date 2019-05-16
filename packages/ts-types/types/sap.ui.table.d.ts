@@ -13,7 +13,6 @@
 /// <reference path="./sap.ui.documentation.d.ts" />
 /// <reference path="./sap.ui.dt.d.ts" />
 /// <reference path="./sap.ui.fl.d.ts" />
-/// <reference path="./sap.ui.integration.d.ts" />
 /// <reference path="./sap.ui.layout.d.ts" />
 /// <reference path="./sap.ui.rta.d.ts" />
 /// <reference path="./sap.ui.suite.d.ts" />
@@ -21,7 +20,7 @@
 /// <reference path="./sap.ui.unified.d.ts" />
 /// <reference path="./sap.ui.ux3.d.ts" />
 /// <reference path="./sap.uxap.d.ts" />
-// For Library Version: 1.65.1
+// For Library Version: 1.60.12
 
 declare namespace sap {
   namespace ui {
@@ -29,286 +28,6 @@ declare namespace sap {
      * Table-like controls, mainly for desktop scenarios.
      */
     namespace table {
-      namespace plugins {
-        /**
-         * @SINCE 1.64
-         * @EXPERIMENTAL (since 1.64)
-         *
-         * Implements a plugin to enable a special multi-selection behavior:
-         * 	 - No Select All button, select all can only be done via range selection
-         * 	 - Dedicated button to clear the selection
-         * 	 - The number of items which can be selected in a range is defined with the limit property by the application.
-         * 			If the user tries to select more items, the selection is automatically limited, and the table scrolls
-         * 			back to the last selected item
-         * 	 - If not already loaded, the table loads the selected items up to the given limit
-         * 	 - Multiple consecutive selections are possible
-         *
-         * When this plugin is applied to the table, the selection mode is automatically set to MultiToggle and
-         * cannot be changed.
-         */
-        class MultiSelectionPlugin extends sap.ui.table.plugins
-          .SelectionPlugin {
-          /**
-           * Constructs an instance of sap.ui.table.plugins.MultiSelectionPlugin
-           *
-           * Accepts an object literal `mSettings` that defines initial property values, aggregated and associated
-           * objects as well as event handlers. See {@link sap.ui.base.ManagedObject#constructor} for a general description
-           * of the syntax of the settings object.
-           */
-          constructor();
-
-          /**
-           * Attaches event handler `fnFunction` to the {@link #event:selectionChange selectionChange} event of this
-           * `sap.ui.table.plugins.MultiSelectionPlugin`.
-           *
-           * When called, the context of the event handler (its `this`) will be bound to `oListener` if specified,
-           * otherwise it will be bound to this `sap.ui.table.plugins.MultiSelectionPlugin` itself.
-           *
-           * This event is fired when the selection is changed.
-           */
-          // @ts-ignore
-          attachSelectionChange(
-            /**
-             * An application-specific payload object that will be passed to the event handler along with the event
-             * object when firing the event
-             */
-            oData: object,
-            /**
-             * The function to be called when the event occurs
-             */
-            fnFunction: Function,
-            /**
-             * Context object to call the event handler with. Defaults to this `sap.ui.table.plugins.MultiSelectionPlugin`
-             * itself
-             */
-            oListener?: object
-          ): sap.ui.table.plugins.MultiSelectionPlugin;
-          /**
-           * Detaches event handler `fnFunction` from the {@link #event:selectionChange selectionChange} event of
-           * this `sap.ui.table.plugins.MultiSelectionPlugin`.
-           *
-           * The passed function and listener object must match the ones used for event registration.
-           */
-          // @ts-ignore
-          detachSelectionChange(
-            /**
-             * The function to be called, when the event occurs
-             */
-            fnFunction: Function,
-            /**
-             * Context object on which the given function had to be called
-             */
-            oListener?: object
-          ): sap.ui.table.plugins.MultiSelectionPlugin;
-          /**
-           * Creates a new subclass of class sap.ui.table.plugins.MultiSelectionPlugin with name `sClassName` and
-           * enriches it with the information contained in `oClassInfo`.
-           *
-           * `oClassInfo` might contain the same kind of information as described in {@link sap.ui.table.plugins.SelectionPlugin.extend}.
-           */
-          // @ts-ignore
-          static extend(
-            /**
-             * Name of the class being created
-             */
-            sClassName: string,
-            /**
-             * Object literal with information about the class
-             */
-            oClassInfo?: object,
-            /**
-             * Constructor function for the metadata object; if not given, it defaults to `sap.ui.core.ElementMetadata`
-             */
-            FNMetaImpl?: Function
-          ): Function;
-          /**
-           * Fires event {@link #event:selectionChange selectionChange} to attached listeners.
-           */
-          // @ts-ignore
-          fireSelectionChange(
-            /**
-             * Parameters to pass along with the event
-             */
-            mParameters?: {
-              /**
-               * Array of indices whose selection has been changed (either selected or deselected).
-               */
-              indices?: number[];
-              /**
-               * Indicates whether the selection limit has been reached.
-               */
-              limitReached?: boolean;
-            }
-          ): sap.ui.table.plugins.MultiSelectionPlugin;
-          /**
-           * Gets current value of property {@link #getLimit limit}.
-           *
-           * Number of items which can be selected in a range.
-           *
-           * Default value is `200`.
-           */
-          getLimit(): number;
-          /**
-           * Returns a metadata object for class sap.ui.table.plugins.MultiSelectionPlugin.
-           */
-          // @ts-ignore
-          static getMetadata(): sap.ui.base.Metadata;
-          /**
-           * Sets a new value for property {@link #getLimit limit}.
-           *
-           * Number of items which can be selected in a range.
-           *
-           * When called with a value of `null` or `undefined`, the default value of the property will be restored.
-           *
-           * Default value is `200`.
-           */
-          setLimit(
-            /**
-             * New value for property `limit`
-             */
-            iLimit: number
-          ): sap.ui.table.plugins.MultiSelectionPlugin;
-          /**
-           * Attaches event handler `fnFunction` to the {@link #event:selectionChange selectionChange} event of this
-           * `sap.ui.table.plugins.MultiSelectionPlugin`.
-           *
-           * When called, the context of the event handler (its `this`) will be bound to `oListener` if specified,
-           * otherwise it will be bound to this `sap.ui.table.plugins.MultiSelectionPlugin` itself.
-           *
-           * This event is fired when the selection is changed.
-           */
-          // @ts-ignore
-          attachSelectionChange(
-            /**
-             * The function to be called when the event occurs
-             */
-            fnFunction: Function,
-            /**
-             * Context object to call the event handler with. Defaults to this `sap.ui.table.plugins.MultiSelectionPlugin`
-             * itself
-             */
-            oListener?: object
-          ): sap.ui.table.plugins.MultiSelectionPlugin;
-        }
-        /**
-         * @SINCE 1.64
-         * @EXPERIMENTAL (since 1.64)
-         *
-         * Implements the selection methods for a table.
-         */
-        // @ts-ignore - static "getMetadata" inheritance issue
-        class SelectionPlugin extends sap.ui.base.ManagedObject {
-          /**
-           * Constructs an instance of sap.ui.table.plugins.SelectionPlugin
-           *
-           * The following restrictions apply:
-           * 	 - Do not create subclasses of the SelectionPlugin. The API is subject to change.
-           *
-           * Accepts an object literal `mSettings` that defines initial property values, aggregated and associated
-           * objects as well as event handlers. See {@link sap.ui.base.ManagedObject#constructor} for a general description
-           * of the syntax of the settings object.
-           */
-          constructor();
-
-          /**
-           * Attaches event handler `fnFunction` to the {@link #event:selectionChange selectionChange} event of this
-           * `sap.ui.table.plugins.SelectionPlugin`.
-           *
-           * When called, the context of the event handler (its `this`) will be bound to `oListener` if specified,
-           * otherwise it will be bound to this `sap.ui.table.plugins.SelectionPlugin` itself.
-           *
-           * This event is fired when the selection is changed.
-           */
-          attachSelectionChange(
-            /**
-             * An application-specific payload object that will be passed to the event handler along with the event
-             * object when firing the event
-             */
-            oData: object,
-            /**
-             * The function to be called when the event occurs
-             */
-            fnFunction: Function,
-            /**
-             * Context object to call the event handler with. Defaults to this `sap.ui.table.plugins.SelectionPlugin`
-             * itself
-             */
-            oListener?: object
-          ): sap.ui.table.plugins.SelectionPlugin;
-          /**
-           * Detaches event handler `fnFunction` from the {@link #event:selectionChange selectionChange} event of
-           * this `sap.ui.table.plugins.SelectionPlugin`.
-           *
-           * The passed function and listener object must match the ones used for event registration.
-           */
-          detachSelectionChange(
-            /**
-             * The function to be called, when the event occurs
-             */
-            fnFunction: Function,
-            /**
-             * Context object on which the given function had to be called
-             */
-            oListener?: object
-          ): sap.ui.table.plugins.SelectionPlugin;
-          /**
-           * Creates a new subclass of class sap.ui.table.plugins.SelectionPlugin with name `sClassName` and enriches
-           * it with the information contained in `oClassInfo`.
-           *
-           * `oClassInfo` might contain the same kind of information as described in {@link sap.ui.base.ManagedObject.extend}.
-           */
-          // @ts-ignore
-          static extend(
-            /**
-             * Name of the class being created
-             */
-            sClassName: string,
-            /**
-             * Object literal with information about the class
-             */
-            oClassInfo?: object,
-            /**
-             * Constructor function for the metadata object; if not given, it defaults to `sap.ui.core.ElementMetadata`
-             */
-            FNMetaImpl?: Function
-          ): Function;
-          /**
-           * Fires event {@link #event:selectionChange selectionChange} to attached listeners.
-           */
-          fireSelectionChange(
-            /**
-             * Parameters to pass along with the event
-             */
-            mParameters?: object
-          ): sap.ui.table.plugins.SelectionPlugin;
-          /**
-           * Returns a metadata object for class sap.ui.table.plugins.SelectionPlugin.
-           */
-          // @ts-ignore
-          static getMetadata(): sap.ui.base.Metadata;
-          /**
-           * Attaches event handler `fnFunction` to the {@link #event:selectionChange selectionChange} event of this
-           * `sap.ui.table.plugins.SelectionPlugin`.
-           *
-           * When called, the context of the event handler (its `this`) will be bound to `oListener` if specified,
-           * otherwise it will be bound to this `sap.ui.table.plugins.SelectionPlugin` itself.
-           *
-           * This event is fired when the selection is changed.
-           */
-          attachSelectionChange(
-            /**
-             * The function to be called when the event occurs
-             */
-            fnFunction: Function,
-            /**
-             * Context object to call the event handler with. Defaults to this `sap.ui.table.plugins.SelectionPlugin`
-             * itself
-             */
-            oListener?: object
-          ): sap.ui.table.plugins.SelectionPlugin;
-        }
-      }
-
       interface AnalyticalColumnOpts extends sap.ui.table.ColumnOpts {
         /**
          * Defines the primary model property which is used inside the Column. In case of the analytical extension
@@ -479,7 +198,7 @@ declare namespace sap {
 
         /**
          * Indicates if the column is sorted. This property only controls if a sort indicator is displayed in the
-         * column header - it does not trigger the sort function. The column can be sorted using {@link sap.ui.table.Table#sort}.
+         * column header - it does not trigger the sort function. The column has to be sorted by calling `Column.sort()`
          */
         sorted?: boolean;
 
@@ -501,8 +220,8 @@ declare namespace sap {
 
         /**
          * Indicates if the column is filtered. This property only controls if a filter indicator is displayed in
-         * the column header - it does not trigger the filter function. The column can be filtered using {@link
-         * sap.ui.table.Table#filter}.
+         * the column header - it does not trigger the filter function. The column has to be filtered by calling
+         * `Column.sort()`
          */
         filtered?: boolean;
 
@@ -661,9 +380,7 @@ declare namespace sap {
 
       interface RowOpts extends sap.ui.core.ElementOpts {
         /**
-         * The actual cells are a table-internal construct. The controls in this aggregation are the content of
-         * the cells. This aggregation is managed by the table and must not be manipulated. Only read access is
-         * allowed.
+         * The controls for the cells.
          */
         cells?: sap.ui.core.Control[] | sap.ui.core.Control;
       }
@@ -712,27 +429,10 @@ declare namespace sap {
         /**
          * @SINCE 1.48.0
          *
-         * The highlight state of the rows.
-         *
-         * If the highlight is set to {@link sap.ui.core.MessageType sap.ui.core.MessageType.None} (default), no
-         * highlights are visible. Valid values for the `highlight` property are values of the enumerations {@link
-         * sap.ui.core.MessageType} or {@link sap.ui.core.IndicationColor}.
-         *
-         * Accessibility support is provided through the associated {@link sap.ui.table.RowSettings#setHighlightText
-         * highlightText} property. If the `highlight` property is set to a value of {@link sap.ui.core.MessageType},
-         * the `highlightText` property does not need to be set because a default text is used. However, the default
-         * text can be overridden by setting the `highlightText` property. In all other cases the `highlightText`
-         * property must be set.
+         * The highlight state of the rows. If the highlight is set to {@link sap.ui.core.MessageType.None} (default),
+         * no highlights are visible.
          */
-        highlight?: string;
-
-        /**
-         * @SINCE 1.62
-         *
-         * Defines the semantics of the {@link sap.ui.table.RowSettings#setHighlight highlight} property for accessibility
-         * purposes.
-         */
-        highlightText?: string;
+        highlight?: sap.ui.core.MessageType;
       }
 
       interface TableOpts extends sap.ui.core.ControlOpts {
@@ -748,9 +448,9 @@ declare namespace sap {
          * height based on the content density configuration. The actual height can increase based on the content.
          *
          * In the table's body, it defines the height of the row content. The actual row height is also influenced
-         * by other factors, such as the border width. If the `visibleRowCountMode` property is set to {@link sap.ui.table.VisibleRowCountMode
-         * Fixed} or {@link sap.ui.table.VisibleRowCountMode Interactive}, the value defines the minimum height,
-         * and the actual height can increase based on the content. If the mode is {@link sap.ui.table.VisibleRowCountMode
+         * by other factors, such as the border width. If the `visibleRowCountMode` property is set to {@link sap.ui.table.VisibleRowCountMode.Fixed
+         * Fixed} or {@link sap.ui.table.VisibleRowCountMode.Interactive Interactive}, the value defines the minimum
+         * height, and the actual height can increase based on the content. If the mode is {@link sap.ui.table.VisibleRowCountMode.Auto
          * Auto}, the value defines the actual height, and any content that doesn't fit is cut off.
          *
          * If no value is set (includes 0), a default height is applied based on the content density configuration.
@@ -789,8 +489,7 @@ declare namespace sap {
          * how the selection can be extended. It may also influence the visual appearance. When the selection mode
          * is changed, the current selection is removed. **Note:** Since the group header visualization relies on
          * the row selectors, the row selectors are always shown if the grouping functionality (depends on table
-         * type) is enabled, even if `sap.ui.table.SelectionMode.None` is set. **Note:** When a selection plugin
-         * is applied to the table, the selection mode is controlled by the plugin and cannot be changed manually.
+         * type) is enabled, even if `sap.ui.table.SelectionMode.None` is set.
          */
         selectionMode?: sap.ui.table.SelectionMode;
 
@@ -849,8 +548,6 @@ declare namespace sap {
          * 			with OData models.
          * 	 - The table can only be grouped by **one** column at a time. Grouping by another column will remove
          * 			the current grouping.
-         * 	 - For the grouping to work correctly, {@link sap.ui.table.Column#getSortProperty sortProperty} must
-         * 			be set for the grouped column.
          * 	 - If grouping has been done, sorting and filtering is not possible. Any existing sorting and filtering
          * 			rules do no longer apply. The UI is not updated accordingly (e.g. menu items, sort and filter icons).
          *
@@ -990,8 +687,6 @@ declare namespace sap {
         /**
          * fired when the row selection of the table has been changed (the event parameters can be used to determine
          * selection changes - to find out the selected rows you should better use the table selection API)
-         *
-         * **Note:** When a selection plugin is applied to the table, this event won't be fired.
          */
         rowSelectionChange?: Function;
 
@@ -1085,8 +780,8 @@ declare namespace sap {
         /**
          * @SINCE 1.60
          *
-         * This event gets fired when the user pastes content from the clipboard to the table. Pasting can be done
-         * via the context menu or the standard paste keyboard shortcut, if the focus is inside the table.
+         * This event gets fired when the user performs paste from clipboard on the table. Paste action can be performed
+         * from the context menu or with CTRL-V keyboard key combination.
          */
         paste?: Function;
 
@@ -1161,24 +856,10 @@ declare namespace sap {
         contextMenu?: sap.ui.core.IContextMenu;
 
         /**
-         * @SINCE 1.64
-         * @EXPERIMENTAL (since 1.64)
-         *
-         * Plugin section of the table. Multiple plugins are possible, but always only **one** of a certain type.
-         *
-         * The following restrictions apply:
-         * 	 - Only one MultiSelectionPlugin can be applied. No other plugins can be applied.
-         */
-        plugins?:
-          | sap.ui.table.plugins.SelectionPlugin[]
-          | sap.ui.table.plugins.SelectionPlugin;
-
-        /**
          * @EXPERIMENTAL (since 1.28)
          *
          * The column by which the table is grouped. Grouping will only be performed if `enableGrouping` is set
-         * to `true`. Setting `groupBy` in the view does not work and throws an error. It can only be set if the
-         * column by which the table is grouped is already part of the `columns` aggregation of the table.
+         * to `true`.
          */
         groupBy?: sap.ui.table.Column | string;
 
@@ -1515,6 +1196,11 @@ declare namespace sap {
           iToIndex: number
         ): sap.ui.table.AnalyticalTable;
         /**
+         * Clears the complete selection (all analytical table rows/nodes will be deselected).
+         */
+        // @ts-ignore
+        clearSelection(): sap.ui.table.AnalyticalTable;
+        /**
          * Collapses one or more rows.
          */
         collapse(
@@ -1672,7 +1358,7 @@ declare namespace sap {
          * the start/end of a selection range, when using Shift-Click to select multiple entries at once.
          */
         // @ts-ignore
-        getSelectedIndex(): number[];
+        getSelectedIndex(): any;
         /**
          * Returns an array containing the row indices of all selected tree nodes (in ascending order).
          *
@@ -1681,7 +1367,7 @@ declare namespace sap {
          * yet loaded" to the client), will not be returned.
          */
         // @ts-ignore
-        getSelectedIndices(): number[];
+        getSelectedIndices(): any;
         /**
          * @deprecated (since 1.44.0) - please use the corresponding binding parameter `sumOnTop` instead.
          *
@@ -2132,8 +1818,8 @@ declare namespace sap {
          * Gets current value of property {@link #getFiltered filtered}.
          *
          * Indicates if the column is filtered. This property only controls if a filter indicator is displayed in
-         * the column header - it does not trigger the filter function. The column can be filtered using {@link
-         * sap.ui.table.Table#filter}.
+         * the column header - it does not trigger the filter function. The column has to be filtered by calling
+         * `Column.sort()`
          *
          * Default value is `false`.
          */
@@ -2277,7 +1963,7 @@ declare namespace sap {
          * Labels of the column which are displayed in the column header. Define a control for each header row in
          * the table. Use this aggregation if you want to use multiple headers per column.
          */
-        getMultiLabels(): sap.ui.core.Control[];
+        getMultiLabels(): any;
         /**
          * @SINCE 1.11.1
          *
@@ -2320,7 +2006,7 @@ declare namespace sap {
          * Gets current value of property {@link #getSorted sorted}.
          *
          * Indicates if the column is sorted. This property only controls if a sort indicator is displayed in the
-         * column header - it does not trigger the sort function. The column can be sorted using {@link sap.ui.table.Table#sort}.
+         * column header - it does not trigger the sort function. The column has to be sorted by calling `Column.sort()`
          *
          * Default value is `false`.
          */
@@ -2360,11 +2046,12 @@ declare namespace sap {
          */
         getTemplate(): sap.ui.core.Control | string;
         /**
-         * Returns a template clone. It either finds an unused clone or clones a new one from the template.
+         * Returns a column template clone. It either finds an unused clone or clones a new one from the column
+         * template.
          */
         getTemplateClone(
           /**
-           * Index of the column in the columns aggregation of the table
+           * Index of the column in the column aggregation of the table
            */
           iIndex: number
         ): sap.ui.core.Control | null;
@@ -2422,7 +2109,7 @@ declare namespace sap {
          *
          * Additionally, it unregisters them from the hosting UIArea.
          */
-        removeAllMultiLabels(): sap.ui.core.Control[];
+        removeAllMultiLabels(): any;
         /**
          * @SINCE 1.13.1
          *
@@ -2473,8 +2160,8 @@ declare namespace sap {
          * Sets a new value for property {@link #getFiltered filtered}.
          *
          * Indicates if the column is filtered. This property only controls if a filter indicator is displayed in
-         * the column header - it does not trigger the filter function. The column can be filtered using {@link
-         * sap.ui.table.Table#filter}.
+         * the column header - it does not trigger the filter function. The column has to be filtered by calling
+         * `Column.sort()`
          *
          * When called with a value of `null` or `undefined`, the default value of the property will be restored.
          *
@@ -2746,7 +2433,7 @@ declare namespace sap {
          * Sets a new value for property {@link #getSorted sorted}.
          *
          * Indicates if the column is sorted. This property only controls if a sort indicator is displayed in the
-         * column header - it does not trigger the sort function. The column can be sorted using {@link sap.ui.table.Table#sort}.
+         * column header - it does not trigger the sort function. The column has to be sorted by calling `Column.sort()`
          *
          * When called with a value of `null` or `undefined`, the default value of the property will be restored.
          *
@@ -2984,11 +2671,9 @@ declare namespace sap {
         /**
          * Gets content of aggregation {@link #getCells cells}.
          *
-         * The actual cells are a table-internal construct. The controls in this aggregation are the content of
-         * the cells. This aggregation is managed by the table and must not be manipulated. Only read access is
-         * allowed.
+         * The controls for the cells.
          */
-        getCells(): sap.ui.core.Control[];
+        getCells(): any;
         /**
          * Returns the index of the row in the table or -1 if not added to a table. This function considers the
          * scroll position of the table and also takes fixed rows and fixed bottom rows into account.
@@ -2999,13 +2684,6 @@ declare namespace sap {
          */
         // @ts-ignore
         static getMetadata(): sap.ui.base.Metadata;
-        /**
-         * Returns the related `RowAction` of the row.
-         *
-         * This function must only be used for application testing purposes. The `RowAction` is generated based
-         * on a template. Manipulations of the object or its items are not supported.
-         */
-        getRowAction(): sap.ui.table.RowAction;
         /**
          * Checks for the provided `sap.ui.core.Control` in the aggregation {@link #getCells cells}. and returns
          * its index if found or -1 otherwise.
@@ -3036,7 +2714,7 @@ declare namespace sap {
          *
          * Additionally, it unregisters them from the hosting UIArea.
          */
-        removeAllCells(): sap.ui.core.Control[];
+        removeAllCells(): any;
         /**
          * Removes a cell from the aggregation {@link #getCells cells}.
          */
@@ -3112,7 +2790,7 @@ declare namespace sap {
          *
          * The action items which should be displayed.
          */
-        getItems(): sap.ui.table.RowActionItem[];
+        getItems(): any;
         /**
          * Returns a metadata object for class sap.ui.table.RowAction.
          */
@@ -3157,7 +2835,7 @@ declare namespace sap {
          *
          * Additionally, it unregisters them from the hosting UIArea.
          */
-        removeAllItems(): sap.ui.table.RowActionItem[];
+        removeAllItems(): any;
         /**
          * Removes a item from the aggregation {@link #getItems items}.
          */
@@ -3442,32 +3120,12 @@ declare namespace sap {
          *
          * Gets current value of property {@link #getHighlight highlight}.
          *
-         * The highlight state of the rows.
-         *
-         * If the highlight is set to {@link sap.ui.core.MessageType sap.ui.core.MessageType.None} (default), no
-         * highlights are visible. Valid values for the `highlight` property are values of the enumerations {@link
-         * sap.ui.core.MessageType} or {@link sap.ui.core.IndicationColor}.
-         *
-         * Accessibility support is provided through the associated {@link sap.ui.table.RowSettings#setHighlightText
-         * highlightText} property. If the `highlight` property is set to a value of {@link sap.ui.core.MessageType},
-         * the `highlightText` property does not need to be set because a default text is used. However, the default
-         * text can be overridden by setting the `highlightText` property. In all other cases the `highlightText`
-         * property must be set.
+         * The highlight state of the rows. If the highlight is set to {@link sap.ui.core.MessageType.None} (default),
+         * no highlights are visible.
          *
          * Default value is `None`.
          */
-        getHighlight(): string;
-        /**
-         * @SINCE 1.62
-         *
-         * Gets current value of property {@link #getHighlightText highlightText}.
-         *
-         * Defines the semantics of the {@link sap.ui.table.RowSettings#setHighlight highlight} property for accessibility
-         * purposes.
-         *
-         * Default value is `empty string`.
-         */
-        getHighlightText(): string;
+        getHighlight(): sap.ui.core.MessageType;
         /**
          * Returns a metadata object for class sap.ui.table.RowSettings.
          */
@@ -3478,17 +3136,8 @@ declare namespace sap {
          *
          * Sets a new value for property {@link #getHighlight highlight}.
          *
-         * The highlight state of the rows.
-         *
-         * If the highlight is set to {@link sap.ui.core.MessageType sap.ui.core.MessageType.None} (default), no
-         * highlights are visible. Valid values for the `highlight` property are values of the enumerations {@link
-         * sap.ui.core.MessageType} or {@link sap.ui.core.IndicationColor}.
-         *
-         * Accessibility support is provided through the associated {@link sap.ui.table.RowSettings#setHighlightText
-         * highlightText} property. If the `highlight` property is set to a value of {@link sap.ui.core.MessageType},
-         * the `highlightText` property does not need to be set because a default text is used. However, the default
-         * text can be overridden by setting the `highlightText` property. In all other cases the `highlightText`
-         * property must be set.
+         * The highlight state of the rows. If the highlight is set to {@link sap.ui.core.MessageType.None} (default),
+         * no highlights are visible.
          *
          * When called with a value of `null` or `undefined`, the default value of the property will be restored.
          *
@@ -3498,25 +3147,7 @@ declare namespace sap {
           /**
            * New value for property `highlight`
            */
-          sHighlight: string
-        ): sap.ui.table.RowSettings;
-        /**
-         * @SINCE 1.62
-         *
-         * Sets a new value for property {@link #getHighlightText highlightText}.
-         *
-         * Defines the semantics of the {@link sap.ui.table.RowSettings#setHighlight highlight} property for accessibility
-         * purposes.
-         *
-         * When called with a value of `null` or `undefined`, the default value of the property will be restored.
-         *
-         * Default value is `empty string`.
-         */
-        setHighlightText(
-          /**
-           * New value for property `highlightText`
-           */
-          sHighlightText: string
+          sHighlight: sap.ui.core.MessageType
         ): sap.ui.table.RowSettings;
       }
       /**
@@ -3582,18 +3213,6 @@ declare namespace sap {
           oExtension: sap.ui.core.Control
         ): sap.ui.table.Table;
         /**
-         * @SINCE 1.64
-         * @EXPERIMENTAL (since 1.64)
-         *
-         * Adds some plugin to the aggregation {@link #getPlugins plugins}.
-         */
-        addPlugin(
-          /**
-           * The plugin to add; if empty, nothing is inserted
-           */
-          oPlugin: sap.ui.table.plugins.SelectionPlugin
-        ): sap.ui.table.Table;
-        /**
          * Adds some row to the aggregation {@link #getRows rows}.
          */
         addRow(
@@ -3603,12 +3222,12 @@ declare namespace sap {
           oRow: sap.ui.table.Row
         ): sap.ui.table.Table;
         /**
-         * Adds the given selection interval to the selection. In case of a single selection, only `iIndexTo` is
-         * added to the selection.
+         * Adds the given selection interval to the selection. In case of single selection, only `iIndexTo` is added
+         * to the selection.
          */
         addSelectionInterval(
           /**
-           * Index from which the selection starts
+           * Index from which the selection should start
            */
           iIndexFrom: number,
           /**
@@ -3945,8 +3564,8 @@ declare namespace sap {
          * When called, the context of the event handler (its `this`) will be bound to `oListener` if specified,
          * otherwise it will be bound to this `sap.ui.table.Table` itself.
          *
-         * This event gets fired when the user pastes content from the clipboard to the table. Pasting can be done
-         * via the context menu or the standard paste keyboard shortcut, if the focus is inside the table.
+         * This event gets fired when the user performs paste from clipboard on the table. Paste action can be performed
+         * from the context menu or with CTRL-V keyboard key combination.
          */
         attachPaste(
           /**
@@ -3972,8 +3591,6 @@ declare namespace sap {
          *
          * fired when the row selection of the table has been changed (the event parameters can be used to determine
          * selection changes - to find out the selected rows you should better use the table selection API)
-         *
-         * **Note:** When a selection plugin is applied to the table, this event won't be fired.
          */
         attachRowSelectionChange(
           /**
@@ -4074,13 +3691,6 @@ declare namespace sap {
          * Destroys the noData in the aggregation {@link #getNoData noData}.
          */
         destroyNoData(): sap.ui.table.Table;
-        /**
-         * @SINCE 1.64
-         * @EXPERIMENTAL (since 1.64)
-         *
-         * Destroys all the plugins in the aggregation {@link #getPlugins plugins}.
-         */
-        destroyPlugins(): sap.ui.table.Table;
         /**
          * Destroys the rowActionTemplate in the aggregation {@link #getRowActionTemplate rowActionTemplate}.
          */
@@ -4630,7 +4240,7 @@ declare namespace sap {
             /**
              * new value of the visible property.
              */
-            newVisible?: boolean;
+            visible?: boolean;
           }
         ): boolean;
         /**
@@ -4707,10 +4317,10 @@ declare namespace sap {
            */
           mParameters?: {
             /**
-             * 2D array of strings with data from the clipboard. The first dimension represents the rows, and the second
+             * 2D-Array of strings with data from the clipboard. The first dimension represents the rows and the second
              * dimension represents the cells of the tabular data.
              */
-            data?: string[][];
+            data?: any;
           }
         ): boolean;
         /**
@@ -4732,7 +4342,7 @@ declare namespace sap {
             /**
              * array of row indices which selection has been changed (either selected or deselected)
              */
-            rowIndices?: number[];
+            rowIndices?: any;
             /**
              * indicator if "select all" function is used to select rows
              */
@@ -4783,7 +4393,7 @@ declare namespace sap {
          * Returns array of IDs of the elements which are the current targets of the association {@link #getAriaLabelledBy
          * ariaLabelledBy}.
          */
-        getAriaLabelledBy(): sap.ui.core.ID[];
+        getAriaLabelledBy(): any;
         /**
          * Returns the control inside the cell with the given row index (in the `rows` aggregation) and column index
          * (in the `columns` aggregation or in the list of visible columns only, depending on parameter `bVisibleColumnIndex`).
@@ -4828,7 +4438,7 @@ declare namespace sap {
          *
          * Columns of the Table
          */
-        getColumns(): sap.ui.table.Column[];
+        getColumns(): any;
         /**
          * In contrast to the function `getFixedColumnCount` which returns the value of the property `fixedColumnCount`,
          * this function returns the actual fixed column count computed based on the table width.
@@ -4962,8 +4572,6 @@ declare namespace sap {
          * 			with OData models.
          * 	 - The table can only be grouped by **one** column at a time. Grouping by another column will remove
          * 			the current grouping.
-         * 	 - For the grouping to work correctly, {@link sap.ui.table.Column#getSortProperty sortProperty} must
-         * 			be set for the grouped column.
          * 	 - If grouping has been done, sorting and filtering is not possible. Any existing sorting and filtering
          * 			rules do no longer apply. The UI is not updated accordingly (e.g. menu items, sort and filter icons).
          *
@@ -4990,7 +4598,7 @@ declare namespace sap {
          * Extension section of the Table. If not set, no extension area will be rendered. Note: In case a `sap.m.Toolbar`
          * is used as header the CSS class sapMTBHeader-CTX should be applied on this toolbar.
          */
-        getExtension(): sap.ui.core.Control[];
+        getExtension(): any;
         /**
          * Gets current value of property {@link #getFirstVisibleRow firstVisibleRow}.
          *
@@ -5079,18 +4687,6 @@ declare namespace sap {
          */
         getNoData(): sap.ui.core.Control | string;
         /**
-         * @SINCE 1.64
-         * @EXPERIMENTAL (since 1.64)
-         *
-         * Gets content of aggregation {@link #getPlugins plugins}.
-         *
-         * Plugin section of the table. Multiple plugins are possible, but always only **one** of a certain type.
-         *
-         * The following restrictions apply:
-         * 	 - Only one MultiSelectionPlugin can be applied. No other plugins can be applied.
-         */
-        getPlugins(): sap.ui.table.plugins.SelectionPlugin[];
-        /**
          * @SINCE 1.45.0
          *
          * Gets current value of property {@link #getRowActionCount rowActionCount}.
@@ -5118,9 +4714,9 @@ declare namespace sap {
          * height based on the content density configuration. The actual height can increase based on the content.
          *
          * In the table's body, it defines the height of the row content. The actual row height is also influenced
-         * by other factors, such as the border width. If the `visibleRowCountMode` property is set to {@link sap.ui.table.VisibleRowCountMode
-         * Fixed} or {@link sap.ui.table.VisibleRowCountMode Interactive}, the value defines the minimum height,
-         * and the actual height can increase based on the content. If the mode is {@link sap.ui.table.VisibleRowCountMode
+         * by other factors, such as the border width. If the `visibleRowCountMode` property is set to {@link sap.ui.table.VisibleRowCountMode.Fixed
+         * Fixed} or {@link sap.ui.table.VisibleRowCountMode.Interactive Interactive}, the value defines the minimum
+         * height, and the actual height can increase based on the content. If the mode is {@link sap.ui.table.VisibleRowCountMode.Auto
          * Auto}, the value defines the actual height, and any content that doesn't fit is cut off.
          *
          * If no value is set (includes 0), a default height is applied based on the content density configuration.
@@ -5132,7 +4728,7 @@ declare namespace sap {
          *
          * Rows of the Table
          */
-        getRows(): sap.ui.table.Row[];
+        getRows(): any;
         /**
          * Gets content of aggregation {@link #getRowSettingsTemplate rowSettingsTemplate}.
          *
@@ -5155,7 +4751,7 @@ declare namespace sap {
         /**
          * Zero-based indices of selected items, wrapped in an array. An empty array means "no selection".
          */
-        getSelectedIndices(): number[];
+        getSelectedIndices(): any;
         /**
          * Gets current value of property {@link #getSelectionBehavior selectionBehavior}.
          *
@@ -5174,8 +4770,7 @@ declare namespace sap {
          * how the selection can be extended. It may also influence the visual appearance. When the selection mode
          * is changed, the current selection is removed. **Note:** Since the group header visualization relies on
          * the row selectors, the row selectors are always shown if the grouping functionality (depends on table
-         * type) is enabled, even if `sap.ui.table.SelectionMode.None` is set. **Note:** When a selection plugin
-         * is applied to the table, the selection mode is controlled by the plugin and cannot be changed manually.
+         * type) is enabled, even if `sap.ui.table.SelectionMode.None` is set.
          *
          * Default value is `MultiToggle`.
          */
@@ -5210,13 +4805,13 @@ declare namespace sap {
          */
         getShowOverlay(): boolean;
         /**
-         * Gets the sorted columns in the order in which sorting was performed through the {@link sap.ui.table.Table#sort}
-         * method and menus. Does not reflect sorting at binding level or the columns sort visualization set with
-         * {@link sap.ui.table.Column#setSorted} and {@link sap.ui.table.Column#setSortOrder}.
+         * Gets sorted columns in the order of which the sort API at the table or column was called. Sorting on
+         * binding level is not reflected here.
          * See:
          * 	sap.ui.table.Table#sort
+         * 	sap.ui.table.Column#sort
          */
-        getSortedColumns(): sap.ui.table.Column[];
+        getSortedColumns(): any;
         /**
          * Gets current value of property {@link #getThreshold threshold}.
          *
@@ -5305,19 +4900,6 @@ declare namespace sap {
           oExtension: sap.ui.core.Control
         ): number;
         /**
-         * @SINCE 1.64
-         * @EXPERIMENTAL (since 1.64)
-         *
-         * Checks for the provided `sap.ui.table.plugins.SelectionPlugin` in the aggregation {@link #getPlugins
-         * plugins}. and returns its index if found or -1 otherwise.
-         */
-        indexOfPlugin(
-          /**
-           * The plugin whose index is looked for
-           */
-          oPlugin: sap.ui.table.plugins.SelectionPlugin
-        ): number;
-        /**
          * Checks for the provided `sap.ui.table.Row` in the aggregation {@link #getRows rows}. and returns its
          * index if found or -1 otherwise.
          */
@@ -5358,24 +4940,6 @@ declare namespace sap {
           iIndex: number
         ): sap.ui.table.Table;
         /**
-         * @SINCE 1.64
-         * @EXPERIMENTAL (since 1.64)
-         *
-         * Inserts a plugin into the aggregation {@link #getPlugins plugins}.
-         */
-        insertPlugin(
-          /**
-           * The plugin to insert; if empty, nothing is inserted
-           */
-          oPlugin: sap.ui.table.plugins.SelectionPlugin,
-          /**
-           * The `0`-based index the plugin should be inserted at; for a negative value of `iIndex`, the plugin is
-           * inserted at position 0; for a value greater than the current size of the aggregation, the plugin is inserted
-           * at the last position
-           */
-          iIndex: number
-        ): sap.ui.table.Table;
-        /**
          * Inserts a row into the aggregation {@link #getRows rows}.
          */
         insertRow(
@@ -5402,34 +4966,25 @@ declare namespace sap {
         /**
          * Removes all the controls in the association named {@link #getAriaLabelledBy ariaLabelledBy}.
          */
-        removeAllAriaLabelledBy(): sap.ui.core.ID[];
+        removeAllAriaLabelledBy(): any;
         /**
          * Removes all the controls from the aggregation {@link #getColumns columns}.
          *
          * Additionally, it unregisters them from the hosting UIArea.
          */
-        removeAllColumns(): sap.ui.table.Column[];
+        removeAllColumns(): any;
         /**
          * Removes all the controls from the aggregation {@link #getExtension extension}.
          *
          * Additionally, it unregisters them from the hosting UIArea.
          */
-        removeAllExtension(): sap.ui.core.Control[];
-        /**
-         * @SINCE 1.64
-         * @EXPERIMENTAL (since 1.64)
-         *
-         * Removes all the controls from the aggregation {@link #getPlugins plugins}.
-         *
-         * Additionally, it unregisters them from the hosting UIArea.
-         */
-        removeAllPlugins(): sap.ui.table.plugins.SelectionPlugin[];
+        removeAllExtension(): any;
         /**
          * Removes all the controls from the aggregation {@link #getRows rows}.
          *
          * Additionally, it unregisters them from the hosting UIArea.
          */
-        removeAllRows(): sap.ui.table.Row[];
+        removeAllRows(): any;
         /**
          * Removes an ariaLabelledBy from the association named {@link #getAriaLabelledBy ariaLabelledBy}.
          */
@@ -5458,18 +5013,6 @@ declare namespace sap {
           vExtension: number | string | sap.ui.core.Control
         ): sap.ui.core.Control;
         /**
-         * @SINCE 1.64
-         * @EXPERIMENTAL (since 1.64)
-         *
-         * Removes a plugin from the aggregation {@link #getPlugins plugins}.
-         */
-        removePlugin(
-          /**
-           * The plugin to remove or its index or id
-           */
-          vPlugin: number | string | sap.ui.table.plugins.SelectionPlugin
-        ): sap.ui.table.plugins.SelectionPlugin;
-        /**
          * Removes a row from the aggregation {@link #getRows rows}.
          */
         removeRow(
@@ -5493,7 +5036,7 @@ declare namespace sap {
           iIndexTo: number
         ): sap.ui.table.Table;
         /**
-         * Adds all rows to the selection. Please note that for server based models like OData the indices which
+         * Add all rows to the selection. Please note that for server based models like OData the indices which
          * are considered to be selected might not be available at the client yet. Calling getContextByIndex might
          * not return a result but trigger a roundtrip to request this single entity.
          */
@@ -5677,8 +5220,6 @@ declare namespace sap {
          * 			with OData models.
          * 	 - The table can only be grouped by **one** column at a time. Grouping by another column will remove
          * 			the current grouping.
-         * 	 - For the grouping to work correctly, {@link sap.ui.table.Column#getSortProperty sortProperty} must
-         * 			be set for the grouped column.
          * 	 - If grouping has been done, sorting and filtering is not possible. Any existing sorting and filtering
          * 			rules do no longer apply. The UI is not updated accordingly (e.g. menu items, sort and filter icons).
          *
@@ -5883,9 +5424,9 @@ declare namespace sap {
          * height based on the content density configuration. The actual height can increase based on the content.
          *
          * In the table's body, it defines the height of the row content. The actual row height is also influenced
-         * by other factors, such as the border width. If the `visibleRowCountMode` property is set to {@link sap.ui.table.VisibleRowCountMode
-         * Fixed} or {@link sap.ui.table.VisibleRowCountMode Interactive}, the value defines the minimum height,
-         * and the actual height can increase based on the content. If the mode is {@link sap.ui.table.VisibleRowCountMode
+         * by other factors, such as the border width. If the `visibleRowCountMode` property is set to {@link sap.ui.table.VisibleRowCountMode.Fixed
+         * Fixed} or {@link sap.ui.table.VisibleRowCountMode.Interactive Interactive}, the value defines the minimum
+         * height, and the actual height can increase based on the content. If the mode is {@link sap.ui.table.VisibleRowCountMode.Auto
          * Auto}, the value defines the actual height, and any content that doesn't fit is cut off.
          *
          * If no value is set (includes 0), a default height is applied based on the content density configuration.
@@ -5945,11 +5486,11 @@ declare namespace sap {
           sSelectionBehavior: sap.ui.table.SelectionBehavior
         ): sap.ui.table.Table;
         /**
-         * Sets the given selection interval as selection. In case of a single selection, only `iIndexTo` is selected.
+         * Sets the given selection interval as selection. In case of single selection, only `iIndexTo` is selected.
          */
         setSelectionInterval(
           /**
-           * Index from which the selection starts
+           * Index from which the selection should start
            */
           iIndexFrom: number,
           /**
@@ -6412,8 +5953,8 @@ declare namespace sap {
          * When called, the context of the event handler (its `this`) will be bound to `oListener` if specified,
          * otherwise it will be bound to this `sap.ui.table.Table` itself.
          *
-         * This event gets fired when the user pastes content from the clipboard to the table. Pasting can be done
-         * via the context menu or the standard paste keyboard shortcut, if the focus is inside the table.
+         * This event gets fired when the user performs paste from clipboard on the table. Paste action can be performed
+         * from the context menu or with CTRL-V keyboard key combination.
          */
         attachPaste(
           /**
@@ -6434,8 +5975,6 @@ declare namespace sap {
          *
          * fired when the row selection of the table has been changed (the event parameters can be used to determine
          * selection changes - to find out the selected rows you should better use the table selection API)
-         *
-         * **Note:** When a selection plugin is applied to the table, this event won't be fired.
          */
         attachRowSelectionChange(
           /**
@@ -6651,8 +6190,9 @@ declare namespace sap {
         );
 
         /**
-         * Adds the given selection interval to the selection. In case of single selection, only `iIndexTo` is added
-         * to the selection. Invisible nodes (collapsed child nodes) will not be regarded.
+         * Marks a range of tree nodes as selected, starting with iFromIndex going to iToIndex. The TreeNodes are
+         * referenced via their absolute row index. Please be aware, that the absolute row index only applies to
+         * the tree which is visualized by the TreeTable. Invisible nodes (collapsed child nodes) will not be regarded.
          *
          * Please also take notice of the fact, that "addSelectionInterval" does not change any other selection.
          * To override the current selection, please use "setSelctionInterval" or for a single entry use "setSelectedIndex".
@@ -6660,14 +6200,14 @@ declare namespace sap {
         // @ts-ignore
         addSelectionInterval(
           /**
-           * Index from which the selection should start
+           * The starting index of the range which will be selected.
            */
-          iIndexFrom: number,
+          iFromIndex: number,
           /**
-           * Index up to which to select
+           * The starting index of the range which will be selected.
            */
-          iIndexTo: number
-        ): sap.ui.table.Table;
+          iToIndex: number
+        ): sap.ui.table.TreeTable;
         /**
          * Attaches event handler `fnFunction` to the {@link #event:toggleOpenState toggleOpenState} event of this
          * `sap.ui.table.TreeTable`.
@@ -6692,6 +6232,11 @@ declare namespace sap {
            */
           oListener?: object
         ): sap.ui.table.TreeTable;
+        /**
+         * Clears the complete selection (all tree table rows/nodes will lose their selection)
+         */
+        // @ts-ignore
+        clearSelection(): sap.ui.table.TreeTable;
         /**
          * Collapses one or more rows.
          */
@@ -6862,6 +6407,12 @@ declare namespace sap {
          */
         getRootLevel(): number;
         /**
+         * Retrieves the lead selection index. The lead selection index is, among other things, used to determine
+         * the start/end of a selection range, when using Shift-Click to select multiple entries at once.
+         */
+        // @ts-ignore
+        getSelectedIndex(): number;
+        /**
          * Returns an array containing the row indices of all selected tree nodes (ordered ascending).
          *
          * Please be aware of the following: Due to performance/network traffic reasons, the getSelectedIndices
@@ -6869,7 +6420,7 @@ declare namespace sap {
          * yet loaded" to the client), will not be returned.
          */
         // @ts-ignore
-        getSelectedIndices(): number[];
+        getSelectedIndices(): any;
         /**
          * Gets current value of property {@link #getUseGroupMode useGroupMode}.
          *
@@ -6889,20 +6440,32 @@ declare namespace sap {
           iRowIndex: number
         ): boolean;
         /**
-         * Removes the given selection interval from the selection. In case of single selection, only `iIndexTo`
-         * is removed from the selection. Invisible nodes (collapsed child nodes) will not be regarded.
+         * Checks if the row at the given index is selected.
+         */
+        // @ts-ignore
+        isIndexSelected(
+          /**
+           * The row index for which the selection state should be retrieved
+           */
+          iRowIndex: number
+        ): boolean;
+        /**
+         * All rows/tree nodes inside the range (including boundaries) will be deselected. Tree nodes are referenced
+         * with theit absolute row index inside the tree- Please be aware, that the absolute row index only applies
+         * to the tree which is visualized by the TreeTable. Invisible nodes (collapsed child nodes) will not be
+         * regarded.
          */
         // @ts-ignore
         removeSelectionInterval(
           /**
-           * Index from which the deselection should start
+           * The starting index of the range which will be deselected.
            */
-          iIndexFrom: number,
+          iFromIndex: number,
           /**
-           * Index up to which to deselect
+           * The starting index of the range which will be deselected.
            */
-          iIndexTo: number
-        ): sap.ui.table.Table;
+          iToIndex: number
+        ): sap.ui.table.TreeTable;
         /**
          * Selects all available nodes/rows.
          *
@@ -7027,9 +6590,9 @@ declare namespace sap {
           iRootLevel: number
         ): sap.ui.table.TreeTable;
         /**
-         * Sets the selected index In a TreeTable you can only select indices, which correspond to the currently
-         * visualized tree. Invisible tree nodes (e.g. collapsed child nodes) can not be selected via Index, because
-         * they do not correspond to a TreeTable row.
+         * Overridden from Table.js base class. In a TreeTable you can only select indices, which correspond to
+         * the currently visualized tree. Invisible tree nodes (e.g. collapsed child nodes) can not be selected
+         * via Index, because they do not correspond to a TreeTable row.
          */
         // @ts-ignore
         setSelectedIndex(
@@ -7041,7 +6604,6 @@ declare namespace sap {
         /**
          * Sets the selection of the TreeTable to the given range (including boundaries). Beware: The previous selection
          * will be lost/overridden. If this is not wanted, please use "addSelectionInterval" and "removeSelectionInterval".
-         * Please be aware, that the absolute row index only applies to the tree which is visualized by the TreeTable.
          */
         // @ts-ignore
         setSelectionInterval(
@@ -7246,8 +6808,6 @@ declare namespace sap {
       }
       /**
        * Different modes for setting the auto expand mode on tree or analytical bindings.
-       *
-       * This is an alias for {@link sap.ui.model.TreeAutoExpandMode} and kept for compatibility reasons.
        */
       enum TreeAutoExpandMode {}
       /**
@@ -7271,10 +6831,6 @@ declare namespace sap {
   }
 
   interface IUI5DefineDependencyNames {
-    "sap/ui/table/plugins/MultiSelectionPlugin": undefined;
-
-    "sap/ui/table/plugins/SelectionPlugin": undefined;
-
     "sap/ui/table/AnalyticalColumn": undefined;
 
     "sap/ui/table/AnalyticalColumnMenu": undefined;
@@ -7284,8 +6840,6 @@ declare namespace sap {
     "sap/ui/table/Column": undefined;
 
     "sap/ui/table/ColumnMenu": undefined;
-
-    "sap/ui/table/CreationRow": undefined;
 
     "sap/ui/table/Row": undefined;
 

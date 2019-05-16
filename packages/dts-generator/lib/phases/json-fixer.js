@@ -40,7 +40,8 @@ function addImplicitNamespaces(json) {
 }
 
 const badData = {
-  "sap.ui.test.Opa5": true
+  "sap.ui.test.Opa5": true,
+  "sap.f.GridList": true
 };
 function removeBadData(json) {
   json.symbols = _.reject(json.symbols, sym => {

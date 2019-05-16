@@ -13,7 +13,6 @@
 /// <reference path="./sap.ui.documentation.d.ts" />
 /// <reference path="./sap.ui.dt.d.ts" />
 /// <reference path="./sap.ui.fl.d.ts" />
-/// <reference path="./sap.ui.integration.d.ts" />
 /// <reference path="./sap.ui.layout.d.ts" />
 /// <reference path="./sap.ui.rta.d.ts" />
 /// <reference path="./sap.ui.support.d.ts" />
@@ -21,7 +20,7 @@
 /// <reference path="./sap.ui.unified.d.ts" />
 /// <reference path="./sap.ui.ux3.d.ts" />
 /// <reference path="./sap.uxap.d.ts" />
-// For Library Version: 1.65.1
+// For Library Version: 1.60.12
 
 declare namespace sap {
   namespace ui {
@@ -208,12 +207,12 @@ declare namespace sap {
          * Returns array of IDs of the elements which are the current targets of the association {@link #getAriaDescribedBy
          * ariaDescribedBy}.
          */
-        getAriaDescribedBy(): sap.ui.core.ID[];
+        getAriaDescribedBy(): any;
         /**
          * Returns array of IDs of the elements which are the current targets of the association {@link #getAriaLabelledBy
          * ariaLabelledBy}.
          */
-        getAriaLabelledBy(): sap.ui.core.ID[];
+        getAriaLabelledBy(): any;
         /**
          * Gets current value of property {@link #getColor color}.
          *
@@ -255,11 +254,11 @@ declare namespace sap {
         /**
          * Removes all the controls in the association named {@link #getAriaDescribedBy ariaDescribedBy}.
          */
-        removeAllAriaDescribedBy(): sap.ui.core.ID[];
+        removeAllAriaDescribedBy(): any;
         /**
          * Removes all the controls in the association named {@link #getAriaLabelledBy ariaLabelledBy}.
          */
-        removeAllAriaLabelledBy(): sap.ui.core.ID[];
+        removeAllAriaLabelledBy(): any;
         /**
          * Removes an ariaDescribedBy from the association named {@link #getAriaDescribedBy ariaDescribedBy}.
          */
@@ -479,12 +478,12 @@ declare namespace sap {
          * Returns array of IDs of the elements which are the current targets of the association {@link #getAriaDescribedBy
          * ariaDescribedBy}.
          */
-        getAriaDescribedBy(): sap.ui.core.ID[];
+        getAriaDescribedBy(): any;
         /**
          * Returns array of IDs of the elements which are the current targets of the association {@link #getAriaLabelledBy
          * ariaLabelledBy}.
          */
-        getAriaLabelledBy(): sap.ui.core.ID[];
+        getAriaLabelledBy(): any;
         /**
          * Returns a metadata object for class sap.ui.suite.VerticalProgressIndicator.
          */
@@ -500,11 +499,11 @@ declare namespace sap {
         /**
          * Removes all the controls in the association named {@link #getAriaDescribedBy ariaDescribedBy}.
          */
-        removeAllAriaDescribedBy(): sap.ui.core.ID[];
+        removeAllAriaDescribedBy(): any;
         /**
          * Removes all the controls in the association named {@link #getAriaLabelledBy ariaLabelledBy}.
          */
-        removeAllAriaLabelledBy(): sap.ui.core.ID[];
+        removeAllAriaLabelledBy(): any;
         /**
          * Removes an ariaDescribedBy from the association named {@link #getAriaDescribedBy ariaDescribedBy}.
          */
