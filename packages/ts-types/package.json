@@ -1,10 +1,10 @@
 {
   "name": "@openui5/ts-types",
   "description": "OpenUI5 TypeScript Definitions",
-  "version": "1.65.1",
+  "version": "1.60.0",
   "license": "Apache-2.0",
   "types": "types/sap.ui.core.d.ts",
-  "openUI5Version": "1.65.1",
+  "openUI5Version": "1.60.12",
   "devDependencies": {
     "@ui5/cli": "1.4.2",
     "@ui5/dts-generator": "^1.65.0",
